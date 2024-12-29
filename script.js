@@ -1,52 +1,52 @@
 // script.js
-const client = new WebTorrent();
-const torrentsSection = document.getElementById('torrents');
 
-document.getElementById('add-magnet').addEventListener('click', () => {
-    const magnetLink = document.getElementById('magnet-input').value;
-    if (magnetLink) {
-        addTorrent(magnetLink);
+document.getElementById('add-magnet').addEventListener('click', function() {
+    const magnet = document.getElementById('magnet-input').value;
+    if (magnet) {
+        addTorrent(magnet);
+        document.getElementById('magnet-input').value = '';
     }
 });
 
-document.getElementById('upload-torrent').addEventListener('change', (event) => {
+document.getElementById('torrent-file').addEventListener('change', function(event) {
     const file = event.target.files[0];
-        if (file) {
+    if (file && file.type === 'application/x-bittorrent') {
         addTorrent(file);
+        event.target.value = '';
+    } else {
+        alert('Please select a valid .torrent file.');
     }
 });
 
-function addTorrent(input) {
-    torrentsSection.innerHTML = ''; // Clear previous torrents
+function addTorrent(source) {
+    const client = new WebTorrent();
+    const torrentsElement = document.getElementById('torrents');
 
-    client.add(input, (torrent) => {
-        const torrentElement = document.createElement('div');
-        torrentElement.className = 'torrent';
-        torrentElement.innerHTML = `
-            <h3>${torrent.name}</h3>
-            <p>Downloading... ${Math.round(torrent.progress * 100)}%</p>
-            <button id="download-btn-${torrent.infoHash}" onclick="downloadTorrent('${torrent.infoHash}')">Download</button>
-        `;
-        torrentsSection.appendChild(torrentElement);
+    const torrent = client.add(source, (err, torrent) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        const li = document.createElement('li');
+        li.textContent = `Downloading: ${torrent.name}`;
+
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress';
+        const progressbarElement = document.createElement('div');
+        progressbarElement.className = 'progress-bar';
+        progressBar.appendChild(progressBarElement);
+        li.appendChild(progressBar);
+
+        torrentsElement.appendChild(li);
+
+        torrent.on('download', () => {
+            const percent = (torrent.downloaded / torrent.length) * 100;
+            progressbarElement.style.width = `${percent.toFixed(2)}%`;
+        });
 
         torrent.on('done', () => {
-            const downloadBtn = document.getElementById(`download-btn-${torrent.infoHash}`);
-            downloadBtn.textContent = 'Download Complete';
-            downloadBtn.disabled = true;
+            li.textContent = `Completed: ${torrent.name}`;
         });
     });
-
-    client.on('error', (err) => {
-        console.error(err);
-            const reader = new FileReader();
-    });
-}
-
-function downloadTorrent(infoHash) {
-    const torrent = client.get(infoHash);
-    if (torrent) {
-        torrent.files.forEach((file) => {
-            file.appendTo('#torrents');
-        });
-    }
 }

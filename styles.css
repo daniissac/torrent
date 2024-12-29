@@ -1,39 +1,36 @@
-/* styles.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #333;
+    background-color: #2c3e50;
     color: white;
     text-align: center;
-    padding: 1em 0;
+    padding: 1rem 0;
 }
 
 main {
-    padding: 20px;
+    padding: 2rem;
 }
 
-#torrent-input {
+section.input-group {
     display: flex;
-    flex-direction: column;
-}
-
-.input-group {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 input[type="text"], input[type="file"] {
-    padding: 8px;
+    width: calc(100% - 130px);
+    padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
-    padding: 8px 16px;
-    background-color: #3B82F6;
+    padding: 0.5rem 1rem;
+    background-color: #2c3e50;
     color: white;
     border: none;
     border-radius: 4px;
@@ -41,15 +38,34 @@ button {
 }
 
 button:hover {
-    background-color: #2c7be5;
+    background-color: #34495e;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+#torrents {
+    list-style-type: none;
+    padding: 0;
+}
+
+#torrents li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#torrents li .progress {
+    width: calc(100% - 200px);
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#torrents li .progress-bar {
+    height: 1rem;
+    background-color: #3498db;
+    width: 0%;
 }
