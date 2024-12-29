@@ -10,8 +10,8 @@ ByteStream is a Progressive Web Application (PWA) designed to allow users to dow
 
 
 ### Usage
-1.Open your browser and navigate to [here](./torrent)
-2. Use the interface to add magnet links or upload `.torrent` files, and the application will handle the downloads.
+1.  Open your browser and navigate to [here](https://daniissac.com/torrent/)
+2.  Use the interface to add magnet links or upload `.torrent` files, and the application will handle the downloads.
 
 ## License
 
