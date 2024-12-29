@@ -1,3 +1,5 @@
+/* styles.css */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
@@ -13,7 +15,7 @@ header {
 }
 
 main {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 section.input-group {
@@ -26,6 +28,8 @@ input[type="text"], input[type="file"] {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    flex-grow: 1;
+    margin-right: 10px;
 }
 
 button {
@@ -68,4 +72,11 @@ button:hover {
     height: 1rem;
     background-color: #3498db;
     width: 0%;
+}
+
+@media (max-width: 600px) {
+    input[type="text"], input[type="file"] {
+        flex-grow: 2;
+        margin-right: 5px;
+    }
 }
