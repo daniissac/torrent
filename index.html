@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteStream</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ByteStream</h1>
+    </header>
+    <main>
+        <section id="torrent-input">
+            <div class="input-group">
+                <input type="text" id="magnet-input" placeholder="Paste magnet link here...">
+                <button id="add-magnet">Add Magnet</button>
+            </div>
+            <div class="input-group">
+                <input type="file" id="torrent-file" accept=".torrent">
+                <button id="upload-torrent">Upload Torrent</button>
+            </div>
+        </section>
+        <section id="torrents"></section>
+    </main>
+    <footer>
+        <p>&copy; 2023 ByteStream</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/dist/webtorrent.min.js"></script> 
+    <script src="script.js"></script>
+</body>
+</html>

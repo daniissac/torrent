@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="256" fill="#3B82F6"/>
+  <!-- Download Stream Design -->
+  <path d="M 156,156 
+           Q 256,186 256,256
+           Q 256,326 356,356" 
+        stroke="white" 
+        stroke-width="32" 
+        fill="none"
+        stroke-linecap="round"/>
+  <path d="M 156,196 
+           Q 256,226 256,296
+           Q 256,366 356,396" 
+        stroke="white" 
+        stroke-width="24" 
+        fill="none" 
+        stroke-linecap="round"
+        opacity="0.8"/>
+  <path d="M 156,236 
+           Q 256,266 256,336
+           Q 256,406 356,436" 
+        stroke="white" 
+        stroke-width="16" 
+        fill="none" 
+        stroke-linecap="round"
+        opacity="0.6"/>
+  <!-- Central Download Arrow -->
+  <path d="M256 100 L256 300 L200 244 M256 300 L312 244" 
+        stroke="white" 
+        stroke-width="32" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+</svg>
